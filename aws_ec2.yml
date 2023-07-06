@@ -6,7 +6,7 @@ regions:
 
 filters:
   tag:Name:
-    - "21"
+    - "elasticsearch"
 
 
 compose:
