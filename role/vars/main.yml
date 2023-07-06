@@ -1,0 +1,51 @@
+---
+
+templ: 
+   - /etc/elasticsearch/elasticsearch.yml
+templs:
+   - /etc/elasticsearch/jvm.options
+tempkib:
+   - /etc/kibana/kibana.yml
+
+urls: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+repos: "deb https://artifacts.elastic.co/packages/{{ elasticsearch_version }}/apt stable main"
+repos_redhat: https://artifacts.elastic.co/packages/{{ elasticsearch_version }}/yum
+
+#kibana var
+kibrepo: "deb https://artifacts.elastic.co/packages/{{ kibana_version }}/apt stable main"
+
+#kibana redhat
+baseurl_redhat: "https://artifacts.elastic.co/packages/{{ kibana_versions }}/yum"
+
+
+# cluster_name: my-application
+# node_name: node-1
+
+
+# - name: Gather facts
+#   ansible.builtin.setup:
+#     filter: "{{ item }}"
+#   loop: "{{ ansible_all_ipv4_addresses }}"
+
+#["{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}"]
+#["provider={{ provider }} tag_key={{ tag_key }} tag_value={{ tag_value }} access_key_id={{ access_key_id }} secret_access_key={{ secret_access_key }}"]
+
+
+# paths: 
+#    - /etc/elasticsearch/elasticsearch.yml
+#    - /etc/elasticsearch/jvm.options
+#    - /etc/kibana/kibana.yml 
+
+
+
+
+#all 8 and 7
+
+# wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+# sudo apt-get install apt-transport-https
+# echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
+
+# 8
+# wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+# sudo apt-get install apt-transport-https
+# echo "deb https://artifacts.elastic.co/packages/8.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-8.x.list

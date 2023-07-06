@@ -1,0 +1,43 @@
+
+- name: Configure Elasticsearch service
+  template:
+    src: elasticsearch.yml.j2
+    dest: "{{ item }}"  #/etc/elasticsearch/elasticsearch.yml
+    owner: elasticsearch
+    group: elasticsearch
+    mode: '0644'
+  with_items: "{{ templ }}"
+  # notify: Restart Elasticsearch
+
+- name: Configure Elastic jvm
+  template:
+    src: jvm.options.j2
+    dest: "{{ item }}"  
+    owner: elasticsearch
+    group: elasticsearch
+    mode: '0646'
+  with_items: "{{ templs }}"
+  notify: Restart Elasticsearch
+
+- name: Configure kibanas
+  template:
+    src: kibana.yml.j2
+    dest: "{{ item }}"  
+    owner: root
+    group: root
+    mode: '0646'
+  with_items: "{{ tempkib }}"
+  notify: Restart kibna
+
+
+
+
+
+  
+# - name: Give insecure permissions to an existing file
+#   ansible.builtin.file:
+#     path: "{{ item }}"        #/etc/elasticsearch/elasticsearch.yml 
+#     owner: root
+#     group: root
+#     mode: '0777'
+#   with_items: "{{ paths }}"

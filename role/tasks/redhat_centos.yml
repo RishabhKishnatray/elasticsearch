@@ -1,0 +1,36 @@
+---
+# - name: Import Elastic PGP Key
+#   rpm_key:
+#     key: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+#     state: present
+
+- name: Add Elasticsearch RPM repository
+  yum_repository:
+    name: elasticsearch
+    description: Elasticsearch Repository
+    baseurl: "{{ repos_redhat }}" #https://artifacts.elastic.co/packages/{{ elasticsearch_version }}/yum
+    gpgcheck: yes
+    gpgkey: "{{ urls }}" #https://artifacts.elastic.co/GPG-KEY-elasticsearch
+    enabled: yes
+
+- name: Install Elasticsearch
+  yum:
+    name: elasticsearch
+    state: present
+
+- name: Update apt cache
+  yum:
+    update_cache: yes   
+
+- name: Start and enable Elasticsearch service
+  yum:
+    name: elasticsearch
+    state: latest
+    # # update_cache: yes
+    # enabled: yes
+
+- name: Enable and start Elasticsearch service
+  systemd:
+    name: elasticsearch
+    enabled: yes
+    

@@ -1,0 +1,28 @@
+# ---
+
+    - name: Update apt cache
+      apt:
+       update_cache: yes
+
+    - name: Add Elasticsearch repository GPG key
+      apt_key:
+        url: "{{ urls }}"
+        #https://artifacts.elastic.co/GPG-KEY-elasticsearch
+      
+
+    - name: Add Elasticsearch repository
+      apt_repository:
+        repo: "{{ repos }}"
+        state: present
+      #"deb https://artifacts.elastic.co/packages/{{ elasticsearch_version }}/apt stable main"
+
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+      
+
+    - name: Install Elasticsearch
+      apt:
+        name: elasticsearch={{ v2 }}
+        state: present
+      

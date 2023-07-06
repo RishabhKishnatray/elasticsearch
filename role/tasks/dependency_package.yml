@@ -1,0 +1,7 @@
+  - name: Update packages and install java
+    apt:
+      update_cache: true
+      name: "{{ item }}"
+      state: present
+    loop:
+      - openjdk-8-jdk

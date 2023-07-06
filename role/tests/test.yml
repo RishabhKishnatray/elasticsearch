@@ -1,0 +1,6 @@
+---
+
+- hosts: red
+  become: true
+  roles:
+   - role

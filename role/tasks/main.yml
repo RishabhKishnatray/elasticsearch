@@ -1,0 +1,37 @@
+---
+# - name: Gather facts
+#   ansible.builtin.setup:
+#     filter: "{{ item }}"
+#   loop: "{{ ansible_all_ipv4_addresses }}"
+
+
+#["{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}"]
+
+
+- name: dependency & packages
+  import_tasks: dependency_package.yml
+  when: ansible_distribution == 'Ubuntu' or ansible_distribution == 'Debian'
+
+- name: Install Elasticsearch on Debian/Ubuntu
+  include_tasks: debian_ubuntu.yml
+  when: ansible_distribution == 'Ubuntu' or ansible_distribution == 'Debian'
+
+- name: Install Elasticsearch on Red Hat/CentOS
+  include_tasks: redhat_centos.yml
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'RedHat'
+
+- name: dependency redhat_centos
+  import_tasks: distribution_centos.yml
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'RedHat'
+
+
+- name: install kibana
+  import_tasks: kibana.yml
+  when: ansible_distribution == 'Ubuntu' or ansible_distribution == 'Debian'
+
+- name: install kibana
+  import_tasks: kibana_centos.yml
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'RedHat'
+
+- name: configuration of elasticsearch via jinja templating
+  import_tasks: configuration.yml

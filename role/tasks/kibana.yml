@@ -1,0 +1,34 @@
+---
+- name: AddElasticGPGkey
+  apt_key:
+    url: "{{ urls }}"
+    state: present
+
+
+- name: kibanarepo
+  apt_repository:
+    repo: "{{ kibrepo }}" #"deb https://artifacts.elastic.co/packages/{{ kibana_version }}/apt stable main"
+    state: present
+
+- name: update apt cache
+  apt:
+    update_cache: yes
+
+- name: Install Kibana
+  apt:
+    name: kibana={{ v3 }}
+    state: present
+
+- name: Startkibana
+  service:
+   name: kibana
+   state: started
+
+
+- name: Enabling Kibana service
+  systemd:
+    name: kibana
+    enabled: yes
+    daemon_reload: yes
+
+

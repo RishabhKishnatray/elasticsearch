@@ -1,0 +1,60 @@
+# kibana_centos.yml
+- name: Install Java
+  package:
+        name: java-11-openjdk
+        state: present
+
+
+- name: Add ki Repository
+  yum_repository:
+        name: Kibana repository for 7.x packages
+        description: Elasticsearch repository for Kibana
+        baseurl: "{{ baseurl_redhat }}"
+        gpgcheck: 1
+        enabled: 1
+        # gpgkey: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+
+- name: Upcache
+  yum:
+    update_cache: yes   
+
+- name: Install Kibana
+  package:
+        name: kibana
+        state: present
+        update_cache: yes
+
+
+- name: Start and enable Kibana service
+  systemd:
+        enabled: yes
+        name: kibana
+        state: started
+
+
+
+
+
+
+# - name: Import kibana key
+#   rpm_key:
+#     key: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+#     state: present
+
+
+# name=Kibana repository for 7.x packages
+# baseurl=https://artifacts.elastic.co/packages/7.x/yum
+# gpgcheck=1
+# gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
+# enabled=1
+# autorefresh=1
+# type=rpm-md
+    # - name: Configure Kibana
+    #   copy:
+    #     content: |
+    #       server.host: "0.0.0.0"
+    #       elasticsearch.hosts: ["http://localhost:9200"]
+    #     dest: /etc/kibana/kibana.yml
+    #     owner: kibana
+    #     group: kibana
+    #     mode: 0644
