@@ -6,12 +6,7 @@
 
 
 #["{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}"]
-- name: Wait for 5 minutes
-  wait_for:
-    timeout: 300
-    delay: 1
-    state: started
-    sleep: 60
+
 
 - name: dependency & packages
   import_tasks: dependency_package.yml
