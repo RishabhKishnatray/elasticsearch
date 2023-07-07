@@ -7,7 +7,7 @@ regions:
 
 filters:
   tag:Name:
-    - "elasticsearch"
+    - "elasticsearchpub"
 
 
 compose:
