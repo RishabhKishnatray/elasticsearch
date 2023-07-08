@@ -6,7 +6,9 @@
 
 
 #["{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}"]
-
+- name: Wait for 5 minutes
+  pause:
+    minutes: 5
 
 - name: dependency & packages
   import_tasks: dependency_package.yml
