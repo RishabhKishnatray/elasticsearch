@@ -17,7 +17,7 @@
     group: elasticsearch
     mode: '0646'
   with_items: "{{ templs }}"
-  notify: Restart Elasticsearch
+  # notify: Restart Elasticsearch # should we uncomment 
 
 - name: Configure kibanas
   template:
@@ -27,7 +27,7 @@
     group: root
     mode: '0646'
   with_items: "{{ tempkib }}"
-  notify: Restart kibna
+  # notify: Restart kibna      should be uncomment
 
 
 
