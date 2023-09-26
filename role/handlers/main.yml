@@ -1,11 +1,12 @@
 ---
-- name: Restart Elasticsearch
-  service:
-    name: elasticsearch
-    state: restarted
+# - name: Restart Elasticsearch
+#   service:
+#     name: elasticsearch
+#     state: restarted
 
 
-- name: Restart kibna
-  service:
-    name: kibana
-    state: restarted
+# - name: Restart kibna
+#   service:
+#     name: kibana
+#     state: restarted
+#this part should be uncommented
