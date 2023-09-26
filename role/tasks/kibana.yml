@@ -19,16 +19,16 @@
     name: kibana={{ v3 }}
     state: present
 
-- name: Startkibana
-  service:
-   name: kibana
-   state: started
+# - name: Startkibana
+#   service:
+#    name: kibana
+#    state: started
 
 
-- name: Enabling Kibana service
-  systemd:
-    name: kibana
-    enabled: yes
-    daemon_reload: yes
+# - name: Enabling Kibana service
+#   systemd:
+#     name: kibana
+#     enabled: yes
+#     daemon_reload: yes
 
 
