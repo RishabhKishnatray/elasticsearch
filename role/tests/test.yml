@@ -1,6 +1,6 @@
 ---
 
-- hosts: red
+- hosts: localhost
   become: true
   roles:
    - role
