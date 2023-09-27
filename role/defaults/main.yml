@@ -1,22 +1,22 @@
 ---
 
 # Here you can specify the version like v1: 8.8.0 , v2: 7.17.1
-#elasticsearch_version: "7.x"
-#v1: 8.8.0
-#v2: 7.17.1
+elasticsearch_version: "7.x"
+v1: 8.8.0
+v2: 7.17.1
 
 #Here you can specify the version of kibana
-#kibana_version: "7.x"
-#v3: 7.17.10
+kibana_version: "7.x"
+v3: 7.17.10
 
 
 
 # # Here you can specify the version like v1: 8.8.0 , v2: 7.17.1
-elasticsearch_version: "6.x"
-v1: 8.8.0
-v2: 6.8.0
+# elasticsearch_version: "6.x"
+# v1: 8.8.0
+# v2: 6.8.0
 
 # #Here you can specify the version of kibana
-kibana_version: "6.x"
-v3: 6.8.23
+# kibana_version: "6.x"
+# v3: 6.8.23
 
